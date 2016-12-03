@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>encryption</title>
+  <script src="/htmldocs/jquery-2.1.4.min.js" type="application/javascript">
+    </script>
+  <link href="/htmldocs/home.css" rel="stylesheet">
+</head>
+<body id = "body">
+
+
+<br><br><br><br><br>
+<h1>What do you want to encrypt?</h1>
+
+<form id="encryption-form" method = "post" action="/api/encrypt">
+  <label for="plaintext">Plain Text</label>
+  <input type="text" name="plaintext" id="plaintext" value="1111222233334444"/>
+  <button type="submit">Submit</button>
+</form>
+
+<div id="encrtext"></div>
+
+<br> <br>
+
+
+<button onclick="listeHolen()">Liste der abgerufenen Daten</button>
+<br>
+<div id="list"></div>
+
+<script src="/htmldocs/script.js" type="application/javascript"></script>
+
+</body>
+</html>
