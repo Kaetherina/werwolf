@@ -81,7 +81,7 @@ def giveRoles():
 	global roles
 	random.shuffle(roles)
 	print(str(playersRoles))
-	for i in range(0, len(roles)-1):
+	for i in range(0, len(roles)):
 		playersRoles.append([players[i], roles[i]])
 	print("go all players and roles now, have a look: " + str(playersRoles))
 		
