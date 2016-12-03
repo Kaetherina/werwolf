@@ -4,11 +4,15 @@ import random
 master = "not set"
 allowedRoles = ["Amor", "Seherin", "Hexe", "Jaeger"]
 players = []
+roles = []
 playersRoles = []
+numPlayers = 0
 pw = "werwolf"
 
 
 def getReady(name, numOfPlayers, wantedSpecialRoles, password):
+	global numPlayers 
+	numPlayers = numOfPlayers
 	master = name
 	print("the master is "+ name)
 	if password:
@@ -21,6 +25,7 @@ def getReady(name, numOfPlayers, wantedSpecialRoles, password):
 	if not testSpecialRoles(wantedSpecialRoles):
 		return False
 		print("not all special roles were found.. do some spellcheck")
+	global roles
 	roles = getAllRoles(numOfPlayers, wantedSpecialRoles)
 	print("and these are all the roles: " + str(roles))
 	return True
@@ -31,8 +36,11 @@ def newPlayer(name, inputPassword):
 		if name in players:
 			return False
 		players.append(name)
-		if numOfPlayers==len(players):
-			giveRoles(roles)
+		print("we currently have these players: "+ str(players))
+		print("the length of the array is currently "+ str(len(players)) + "while the number of players is " + str(numPlayers))
+
+		if numPlayers==len(players):
+			giveRoles()
 			print("got all players now! Proceed to the game")
 		return True
 	else:
@@ -68,11 +76,13 @@ def getAllRoles(num, specialRoles):
 			roles.append(specialRoles[i-numWerwolf-numBuerger])
 	return roles
 								
-def giveRoles(roles):
+def giveRoles():
+	global playersRoles
+	global roles
 	random.shuffle(roles)
-	for i in range(0, roles.length):
-		playersRoles[i][0] = players[i]
-		playersRoles[i][1] = roles[i]
+	print(str(playersRoles))
+	for i in range(0, len(roles)-1):
+		playersRoles.append([players[i], roles[i]])
 	print("go all players and roles now, have a look: " + str(playersRoles))
 		
 	
