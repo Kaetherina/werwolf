@@ -72,8 +72,8 @@ def set_pw(bot, update, args):
 def ready(bot, update):
     if name == None:
         bot.sendMessage(chat_id = update.message.chat_id, text = "Du hast keinen Namen angegeben, tippe /myname NAME")
-    elif numOfplayers == 0:
-        bot.sendMessage(chat_id = update.message.chat_id, text = "Spielst du etwa alleine? Sag uns bitte mit /anzahl ZAHL , mit wie vielen Leuten du spielst! :)")
+    elif numOfplayers <= 4:
+        bot.sendMessage(chat_id = update.message.chat_id, text = "Spielst du etwa mit weniger als fünf Leuten? Sag uns bitte mit /anzahl ZAHL , mit wie vielen Leuten du spielst! :)")
     elif password == None:
         bot.sendMessage(chat_id = update.message.chat_id, text = "Bitte gebe ein Passwort an. Nutze dafuer /pw PASSWORD")
     else:

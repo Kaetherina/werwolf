@@ -34,7 +34,7 @@ def getReady(name, numOfPlayers, wantedSpecialRoles, password):
 def newPlayer(name, inputPassword):
 	if inputPassword==pw:
 		if name in players:
-			return False
+			return "!name"
 		players.append(name)
 		print("we currently have these players: "+ str(players))
 		print("the length of the array is currently "+ str(len(players)) + "while the number of players is " + str(numPlayers))
@@ -42,9 +42,10 @@ def newPlayer(name, inputPassword):
 		if numPlayers==len(players):
 			giveRoles()
 			print("got all players now! Proceed to the game")
-		return True
+			return "success"
+		return "player added"
 	else:
-		return False
+		return "!password"
 
 
 def testSpecialRoles(specialRoles):
