@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import registrationLogic
 import telegram, logging
 from telegram.ext import *
@@ -9,8 +11,7 @@ from telegram.ext import Updater, CommandHandler, CallbackQueryHandler
 #dispatcher = updater.dispatcher
 
 
-gameReady = False
-
+masterReady = False
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
 
@@ -18,11 +19,12 @@ def start(bot, update):
     bot.sendMessage(chat_id = update.message.chat_id, text ="Hi, das hier ist unser Werwolf Spiel!")
     bot.sendMessage(chat_id = update.message.chat_id, text ="Wenn du der Spielmaster bist, gib jetzt /master ein, sonst /spieler")
 
+
 def master(bot, update, args):
     bot.sendMessage(chat_id = update.message.chat_id, text ="Perfekt, direkt beim Spielmaster! Bitte gibt uns mit den folgenden Commands wichtige Infos:")
     bot.sendMessage(chat_id = update.message.chat_id, text ="Deinen Namen mit /mastername NAME")
     bot.sendMessage(chat_id = update.message.chat_id, text ="Anzahl der Spieler mit /anzahl ZAHL")
-    bot.sendMessage(chat_id = update.message.chat_id, text ="Die Wahl so vieler Klassen wie du möchtest mit /class KLASSE1 KLASSE2")
+    bot.sendMessage(chat_id = update.message.chat_id, text ="Die Wahl so vieler Klassen wie du moechtest mit /class KLASSE1 KLASSE2")
     bot.sendMessage(chat_id = update.message.chat_id, text ="Fuer mehr Infos zu den Klassen, benutze /classhelp")
     bot.sendMessage(chat_id = update.message.chat_id, text ="Das Passwort fuer dein Spiel mit /pw PASSWORT")
     bot.sendMessage(chat_id = update.message.chat_id, text ="..alternativ kannst du dieses Kommando auslassen und das Passwort bleibt \"werwolf\"")    
@@ -35,7 +37,7 @@ def set_master_name(bot, update, args):
 def set_anzahl(bot, update, args):
     num = int(args[0]) 
     if num<4:
-        bot.sendMessage(chat_id = update.message.chat_id, text="Es können nur 5 oder mehr mitspielen - bitte gibt die Spieleranzahl erneut ein.")
+        bot.sendMessage(chat_id = update.message.chat_id, text="Es koennen nur 5 oder mehr mitspielen - bitte gibt die Spieleranzahl erneut ein.")
     else:
         registrationLogic.setNumOfPlayers(int(args[0]))
         bot.sendMessage(chat_id = update.message.chat_id, text="Ok, du spielst mit " + num +" Spielern")
@@ -67,8 +69,8 @@ def classhelp(bot, update):
 
 
 def spieler(bot,update,args):
-    if gameReady:
-
+    if masterReady:
+        bot.sendMessage(chat_id = update.message.chat_id, text ="what happens now will be explained here")
     else:
         bot.sendMessage(chat_id = update.message.chat_id, text ="Bitte warte bis euer Spielmaster alle nötigen Daten eingetragen hat!")
         bot.sendMessage(chat_id = update.message.chat_id, text ="Gib, sobald er fertig ist nochmal /spieler ein")

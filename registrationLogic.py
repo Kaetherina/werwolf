@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import time
 import random
 import logging
@@ -18,7 +20,7 @@ def setMaster(name):
 	players.append(name)
 	print("the master is set to \""+name+"\"")
 def setPassword(password):
-	global password
+	global pw
 	pw = password
 	print("the password was set to \"" + password +"\"")
 def getPassword():
@@ -29,15 +31,15 @@ def setNumOfPlayers(numOfPlayers):
 	print("The number of players is "+ numPlayers)
 def setSpecialRoles(wantedSpecialRoles):
 	global roles
-	if not(testSpecialRoles)
-		print(not all special roles were found.. do some spellcheck)
-		return False
-	else:
+	if testSpecialRoles(wantedSpecialRoles):
 		global specialRoles 
 		specialRoles= wantedSpecialRoles
 		roles = getAllRoles(numPlayers, wantedSpecialRoles)
 		print("These are all the possible roles: "+ str(roles))
 		return roles
+	else:
+		print("not all special roles were found.. do some spellcheck")
+		return False
 
 def testSpecialRoles(specialRoles):
 	temp = -1
@@ -68,12 +70,12 @@ def getAllRoles(num, specialRoles):
 			roles.append(specialRoles[i-numWerwolf-numBuerger])
 	return roles
 
-def ready()
+def ready():
 	if master == "not set":
 		return "master"
 	elif numPlayers <5:
 		return "players"
-	elif len(specialRoles) = 0:
+	elif len(specialRoles) == 0:
 		return "roles"
 	else:
 		return "ready"
