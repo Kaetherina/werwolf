@@ -70,8 +70,7 @@ def classhelp(bot, update):
 
 def spieler(bot,update,args):
     if masterReady:
-        bot.sendMessage(chat_id = update.message.chat_id, text ="what happens now will be explained here")
-    else:
+        bot.sendMessage(chat_id = update.message.chat_id, text ="what happens now will be explained here")    else:
         bot.sendMessage(chat_id = update.message.chat_id, text ="Bitte warte bis euer Spielmaster alle nötigen Daten eingetragen hat!")
         bot.sendMessage(chat_id = update.message.chat_id, text ="Gib, sobald er fertig ist nochmal /spieler ein")
 # Create the Updater and pass it your bot's token.
