@@ -9,14 +9,14 @@ from telegram.ext import Updater, CommandHandler, CallbackQueryHandler
 #dispatcher = updater.dispatcher
 
 
-gameReady = False
-
+masterReady = False
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
 
 def start(bot, update):
     bot.sendMessage(chat_id = update.message.chat_id, text ="Hi, das hier ist unser Werwolf Spiel!")
     bot.sendMessage(chat_id = update.message.chat_id, text ="Wenn du der Spielmaster bist, gib jetzt /master ein, sonst /spieler")
+
 
 def master(bot, update, args):
     bot.sendMessage(chat_id = update.message.chat_id, text ="Perfekt, direkt beim Spielmaster! Bitte gibt uns mit den folgenden Commands wichtige Infos:")
@@ -67,7 +67,7 @@ def classhelp(bot, update):
 
 
 def spieler(bot,update,args):
-    if gameReady:
+    if masterReady:
 
     else:
         bot.sendMessage(chat_id = update.message.chat_id, text ="Bitte warte bis euer Spielmaster alle nötigen Daten eingetragen hat!")
